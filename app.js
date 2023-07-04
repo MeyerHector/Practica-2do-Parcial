@@ -28,8 +28,8 @@ app.use(require('./routes/reserva.routes'));
 // TODO: Si la petición no coincide con ninguna de las rutas declaradas, mostrar error 404
 
 app.use((req, res)=> {
-    res.status(404).send('ERROR 404, PAGINA NO ENCONTRADA');
+    res.status(404).send('<h1>ERROR 404, PAGINA NO ENCONTRADA</h1>');
 })
 
 // Starting the server
-app.listen(port, () => console.log(`Server on port ${port}`));
+app.listen(port, () => console.log(`Server on http://localhost:${port}`));

@@ -1,25 +1,54 @@
 <%- include('partials/header') %>
 
+
     <div class="container">
 
         <div class="row mt-5">
             <h1 class="text-center border-botton">Lista de Reservas</h1>
             <div class="col">
                 <div class="col-md-3 mb-2">
-                    <a href="/reserva/crear" class="btn btn sm btn-primary" id>Nuevo </a>
+                    <a href="/nueva-reserva" class="btn btn sm btn-primary" id>Nuevo </a>
                     <a href="/" class="btn btn-info text-light">Inicio</a>
                 </div>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Columna 1</th>
-                            <th>Columna 2</th>
-                            <th>Columna 3</th>
-                            <th>Columna n</th>
+                            <th>Codigo</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>DNI</th>
+                            <th>Ida</th>
+                            <th>Vuelta</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
-                    <tbody id="">
-          
+                    <tbody id="listaReservas">
+                        <% reservas.forEach(function(reserva){ %>
+                            <tr>
+                                <th>
+                                    <%= reserva.codigo %>
+                                </th>
+                                <th>
+                                    <%= reserva.nombre %>
+                                </th>
+                                <th>
+                                    <%= reserva.apellido %>
+                                </th>
+                                <th>
+                                    <%= reserva.dni %>
+                                </th>
+                                <th>
+                                    <%= reserva.fechaIda %>
+                                </th>
+                                <th>
+                                    <%= reserva.fechaVuelta %>
+                                </th>
+                                <th>
+                                    <a class="btn btn-danger">Eliminar</a>
+                                    <a href="<%= user.id %>" class="btn btn-warning">Editar</a>
+                                </th>
+                            </tr>
+                            <% }) %>
                     </tbody>
                 </table>
             </div>
