@@ -7,7 +7,7 @@ const Reserva = require('../models/Reserva.js');
 
 // Obtener todas las reservas
 
-ctrl.viewObtenerReservas = async (req, res) => {
+ctrl.renderObtenerReservas = async (req, res) => {
     try {
         const reservas = await Reserva.findAll({
             where: {
@@ -43,9 +43,9 @@ ctrl.obtenerReservas = async (req, res) => {
 
 ctrl.obtenerReserva = async (req, res) => {
     try {
-        const reserva = await Reserva.findByPk({
+        const reserva = await Reserva.findOne({
             where: {
-                id: req.params.id
+                id: Number(req.params.id)
             }
         })
         return res.json(reserva);
@@ -100,7 +100,34 @@ ctrl.viewActualizarReserva = async (req, res) => {
         return res.render('editar-reserva');
 }
 
-ctrl.actualizarReserva = async (req, res) => {}
+ctrl.actualizarReserva = async (req, res) => {
+    const {
+        nombre,
+        apellido,
+        dni,
+        fechaIda,
+        fechaVuelta
+    } = req.body;
+    try {
+        const reserva = await Reserva.update({
+            nombre,
+            apellido,
+            dni,
+            fechaIda,
+            fechaVuelta
+        }, {
+            where: {
+                id: Number(req.params.id)
+            }
+        });
+        return res.json(reserva);
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            message: 'Error al actualizar la reserva'
+        });
+    }
+}
 
 // Eliminar una reserva de forma lógica
 

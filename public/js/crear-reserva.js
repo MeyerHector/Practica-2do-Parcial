@@ -12,6 +12,7 @@ formCrearReserva.addEventListener('submit', async (e) => {
     const fechaVuelta = document.getElementById('vuelta').value;
 
     const body = {
+        codigo: new Date().getTime(),
         nombre,
         apellido,
         dni,

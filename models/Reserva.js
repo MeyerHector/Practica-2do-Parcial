@@ -58,7 +58,7 @@ const Reserva = sequelize.define('Reserva', {
     tableName: 'Reserva'
 })
 
-Reserva.sync({ force: false }).then(() => {
+Reserva.sync({ force: true }).then(() => {
     console.log('Tabla de Reservas creada');
 });
 module.exports = Reserva

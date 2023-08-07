@@ -6,6 +6,8 @@ const {
     crearReserva,
     viewObtenerReservas,
     viewCrearReserva,
+    obtenerReserva,
+    actualizarReserva,
     viewActualizarReserva
 } = require('../controllers/reserva.controllers')
 
@@ -35,15 +37,15 @@ router.get('/editar-reserva/:id', viewActualizarReserva);
 
 // Obtener todas las reservas
 router.get('/api/reservas', obtenerReservas);
- 
+router.get('/api/reservas/:id', obtenerReserva)
 // Crear una reserva
 router.post('/api/reservas', crearReserva);
  
 // Actualizar una reserva
-router.put('/api/reservas/:id', );
+router.put('/api/reservas/:id', actualizarReserva);
  
 // Eliminar una reserva de forma lógica
-router.delete('/api/:id',);
+router.delete('/api/:id', );
 
  
  module.exports = router;
